@@ -22,8 +22,7 @@ def generate_launch_description():
 
     rsp = IncludeLaunchDescription(
         PythonLaunchDescriptionSource([os.path.join(
-            get_package_share_directory(package_name), 'launch', 'rsp.launch.py'
-            )]), launch_arguments={'use_sim_time': 'true'}.items()
+            get_package_share_directory(package_name), 'launch', 'rsp.launch.py')]), launch_arguments={'use_sim_time': 'true'}.items()
     )
 
     world = LaunchConfiguration('world')
@@ -50,7 +49,8 @@ def generate_launch_description():
     
 
     # Launch the ROS-Gazebo bridge for normal topics
-    bridge_params = os.path.join(get_package_share_directory(package_name),'config','gz_bridge.yaml')
+    bridge_params = os.path.join(
+        get_package_share_directory(package_name),'config','gz_bridge.yaml')
     ros_gz_bridge = Node(
         package="ros_gz_bridge",
         executable="parameter_bridge",
